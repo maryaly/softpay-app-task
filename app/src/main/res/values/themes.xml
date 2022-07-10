@@ -1,3 +1,29 @@
 <resources>
-    <style name="Theme.SoftPOS" parent="Theme.AppCompat.NoActionBar" />
+
+    <style name="Theme.SoftPOS" parent="Theme.AppCompat.NoActionBar">
+
+        <!-- Customize your theme here. -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!-- Customize style -->
+    <style name="base_num_button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textColor">@color/md_grey_800</item>
+        <item name="android:textSize">@dimen/_44sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/button_num_round</item>
+        <item name="android:layout_margin">@dimen/_3dp</item>
+    </style>
+
 </resources>

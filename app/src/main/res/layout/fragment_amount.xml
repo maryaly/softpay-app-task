@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="amountViewModel"
+            type="io.softpay.softpos.ui.amount.AmountViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/md_blue_A50">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_amountFragment_horizontal35"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <TextView
+            android:id="@+id/textView_amountFragment_amount"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lines="1"
+            android:text="@={amountViewModel.mAmount}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_80sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/guideline_amountFragment_horizontal35"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_amountFragment_separate"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/DarkGray"
+            app:layout_constraintTop_toBottomOf="@id/guideline_amountFragment_horizontal35" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_amountFragment_separate">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_amountFragment_vertical68"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.68" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_amountFragment_vertical68">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_3dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number1"
+                        style="@style/base_num_button"
+                        android:text="@string/_1"
+                        android:onClick="@{() -> amountViewModel.numberOneClicked()}" />
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number2"
+                        style="@style/base_num_button"
+                        android:text="@string/_2"
+                        android:onClick="@{() -> amountViewModel.numberTwoClicked()}"/>
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number3"
+                        style="@style/base_num_button"
+                        android:text="@string/_3"
+                        android:onClick="@{() -> amountViewModel.numberThreeClicked()}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_3dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number4"
+                        style="@style/base_num_button"
+                        android:text="@string/_4"
+                        android:onClick="@{() -> amountViewModel.numberFourClicked()}"/>
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number5"
+                        style="@style/base_num_button"
+                        android:text="@string/_5"
+                        android:onClick="@{() -> amountViewModel.numberFiveClicked()}"/>
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number6"
+                        style="@style/base_num_button"
+                        android:text="@string/_6"
+                        android:onClick="@{() -> amountViewModel.numberSixClicked()}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_3dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number7"
+                        style="@style/base_num_button"
+                        android:text="@string/_7"
+                        android:onClick="@{() -> amountViewModel.numberSevenClicked()}"/>
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number8"
+                        style="@style/base_num_button"
+                        android:text="@string/_8"
+                        android:onClick="@{() -> amountViewModel.numberEightClicked()}"/>
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number9"
+                        style="@style/base_num_button"
+                        android:text="@string/_9"
+                        android:onClick="@{() -> amountViewModel.numberNineClicked()}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="@dimen/_3dp"
+                    android:layout_marginBottom="@dimen/_3dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button_amountFragment_number0"
+                        style="@style/base_num_button"
+                        android:text="@string/_0"
+                        android:onClick="@{() -> amountViewModel.numberZeroClicked()}"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_2dp"
+                android:layout_marginBottom="@dimen/_2dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline_amountFragment_vertical68">
+
+                <ImageButton
+                    android:id="@+id/imageButton_amountFragment_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/button_red_round"
+                    android:src="@drawable/ic_cancel"
+                    android:contentDescription="@string/cancel"
+                    android:layout_margin="@dimen/_3dp"
+                    android:onClick="@{() -> amountViewModel.buttonCancelClicked()}"/>
+
+                <ImageButton
+                    android:id="@+id/imageButton_amountFragment_back"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/button_yellow_round"
+                    android:src="@drawable/ic_back"
+                    android:contentDescription="@string/back"
+                    android:layout_margin="@dimen/_3dp"
+                    android:onClick="@{() -> amountViewModel.buttonBackClicked()}"/>
+
+                <ImageButton
+                    android:id="@+id/imageButton_amountFragment_enter"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3"
+                    android:background="@drawable/button_green_round"
+                    android:src="@drawable/ic_sale"
+                    android:contentDescription="@string/enter"
+                    android:layout_margin="@dimen/_3dp"
+                    android:onClick="@{() -> amountViewModel.buttonEnterClicked()}"/>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
