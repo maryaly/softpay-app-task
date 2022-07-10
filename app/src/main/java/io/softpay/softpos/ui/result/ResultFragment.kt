@@ -5,24 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
-import io.softpay.sdk.Transaction
 import io.softpay.softpos.R
-import io.softpay.softpos.databinding.FragmentProgressBinding
 import io.softpay.softpos.databinding.FragmentResultBinding
+import io.softpay.softpos.ui.MainViewModel
 import io.softpay.softpos.ui.base.BaseFragment
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import timber.log.Timber
 
 @AndroidEntryPoint
 class ResultFragment : BaseFragment() {
 
+    private val mainViewModel: MainViewModel by activityViewModels()
     private val mResultViewModel: ResultViewModel by viewModels()
     private var _binding: FragmentResultBinding? = null
     private val binding get() = _binding!!
@@ -38,7 +33,10 @@ class ResultFragment : BaseFragment() {
     }
 
     override fun setupView() {
-//        mArgs.transaction?.let { mResultViewModel.showInfo(it) }
+        mainViewModel.mTransaction.value?.let {
+            Timber.e("viwModel: $it")
+            mResultViewModel.showInfo(it)
+        }
         setAnimation()
     }
 
@@ -47,13 +45,7 @@ class ResultFragment : BaseFragment() {
     }
 
     override fun setupObservers() {
-        mResultViewModel.mIsConfirmButtonClicked.observe(
-            viewLifecycleOwner,
-            Observer {
-                if (it == true) {
-                    navigateToSplashFragment()
-                }
-            })
+        /* NO-OP */
     }
 
     private fun setAnimation() {
@@ -65,13 +57,6 @@ class ResultFragment : BaseFragment() {
 
     }
 
-    private fun navigateToSplashFragment() {
-        lifecycleScope.launch(Dispatchers.Default) {
-            mResultViewModel.cancelTransaction()
-        }
-
-        findNavController().navigate(R.id.action_resultFragment_to_splashFragment)
-    }
 
     override fun onDestroyView() {
         super.onDestroyView()

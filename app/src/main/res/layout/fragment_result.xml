@@ -24,7 +24,6 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.35" />
 
-
         <TextView
             android:id="@+id/textView_resultFragment_status"
             android:layout_width="match_parent"
@@ -32,7 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10dp"
             android:gravity="center"
-            android:text="@={resultViewModel.mState}"
+            android:text="@{resultViewModel.mState}"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sp"
             android:textStyle="bold"
@@ -61,24 +60,12 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10dp"
             android:gravity="center"
-            android:text="@={resultViewModel.mDetails}"
+            android:text="@{resultViewModel.mDetails}"
             android:textColor="@color/white"
             android:textSize="@dimen/_16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_resultFragment_referenceId" />
-
-        <Button
-            android:id="@+id/imageButton_resultFragment_confirm"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_orange_round"
-            android:onClick="@{() -> resultViewModel.buttonConfirmClicked()}"
-            android:text="Back to App"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_20sp"
-            android:layout_marginTop="@dimen/_20dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView_resultFragment_details" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

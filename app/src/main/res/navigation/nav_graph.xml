@@ -6,21 +6,6 @@
     app:startDestination="@id/progressFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="io.softpay.softpos.ui.splash.SplashFragment"
-        android:label="Processing"
-        tools:layout="@layout/fragment_splash">
-        <action
-            android:id="@+id/action_splashFragment_to_progressFragment"
-            app:destination="@id/progressFragment"
-            app:enterAnim="@anim/anim_fade_in"
-            app:exitAnim="@anim/anim_fade_out" />
-        <action
-            android:id="@+id/action_splashFragment_to_amountFragment"
-            app:destination="@id/amountFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/amountFragment"
         android:name="io.softpay.softpos.ui.amount.AmountFragment"
         android:label="Amount"
@@ -60,13 +45,7 @@
         android:label="Result"
         app:enterAnim="@anim/anim_fade_in"
         app:exitAnim="@anim/anim_fade_out"
-        tools:layout="@layout/fragment_result">
-        <action
-            android:id="@+id/action_resultFragment_to_splashFragment"
-            app:destination="@id/splashFragment"
-            app:enterAnim="@anim/anim_fade_in"
-            app:exitAnim="@anim/anim_fade_out" />
-    </fragment>
+        tools:layout="@layout/fragment_result" />
 
     <fragment
         android:id="@+id/progressFragment"

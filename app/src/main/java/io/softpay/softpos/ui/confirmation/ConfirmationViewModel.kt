@@ -3,16 +3,15 @@ package io.softpay.softpos.ui.confirmation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.softpay.softpos.R
-import io.softpay.softpos.utils.SingleLiveEvent
-import io.softpay.softpos.utils.number.NumberHelper
-import io.softpay.softpos.utils.resource.ResourceUtilHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.softpay.sdk.Input
 import io.softpay.sdk.State
 import io.softpay.sdk.Transaction
 import io.softpay.sdk.TransactionManager
-import timber.log.Timber
+import io.softpay.softpos.R
+import io.softpay.softpos.utils.SingleLiveEvent
+import io.softpay.softpos.utils.number.NumberHelper
+import io.softpay.softpos.utils.resource.ResourceUtilHelper
 import javax.inject.Inject
 
 @HiltViewModel

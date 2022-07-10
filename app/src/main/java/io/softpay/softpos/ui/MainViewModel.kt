@@ -1,5 +1,6 @@
 package io.softpay.softpos.ui
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,12 +21,15 @@ class MainViewModel @Inject constructor(private val transactionManager: Transact
     private val _transaction = MutableSharedFlow<Transaction>()
     val transaction = _transaction.asSharedFlow()
 
+    var mTransaction = MutableLiveData<Transaction>()
+
     fun launchTransactionFlow() {
         viewModelScope.launch {
             transactionManager.newTransactionFlow()
                 .catch { e ->
                     Timber.e("${e.message}")
                 }.collect { value ->
+                    mTransaction.value = value
                     _transaction.emit(value)
                 }
         }

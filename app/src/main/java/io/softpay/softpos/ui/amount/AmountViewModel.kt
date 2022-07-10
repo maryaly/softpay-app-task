@@ -1,18 +1,18 @@
 package io.softpay.softpos.ui.amount
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.softpay.sdk.Input
+import io.softpay.sdk.TransactionManager
 import io.softpay.softpos.R
 import io.softpay.softpos.utils.Constants
 import io.softpay.softpos.utils.SingleLiveEvent
 import io.softpay.softpos.utils.number.NumberHelper
 import io.softpay.softpos.utils.resource.ResourceUtilHelper
-import dagger.hilt.android.lifecycle.HiltViewModel
-import io.softpay.sdk.Input
-import io.softpay.sdk.Transaction
-import io.softpay.sdk.TransactionManager
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject

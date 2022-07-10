@@ -1,10 +1,7 @@
 package io.softpay.softpos.ui.result
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import io.softpay.softpos.utils.SingleLiveEvent
-import io.softpay.softpos.utils.resource.ResourceUtilHelper
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.softpay.sdk.Input
 import io.softpay.sdk.State
@@ -23,12 +20,6 @@ class ResultViewModel @Inject constructor(
     var mDetails = MutableLiveData<String>()
     var mReferenceId = MutableLiveData<String>()
 
-    private var _mIsConfirmButtonClicked = SingleLiveEvent<Boolean>()
-    val mIsConfirmButtonClicked: LiveData<Boolean> = _mIsConfirmButtonClicked
-
-    fun buttonConfirmClicked() {
-        _mIsConfirmButtonClicked.value = true
-    }
 
     fun showInfo(transaction: Transaction) {
         transaction.referenceId.let { id ->

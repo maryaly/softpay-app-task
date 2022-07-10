@@ -1,7 +1,6 @@
 package io.softpay.softpos.ui.progress
 
 import android.os.Bundle
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,13 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
 import io.softpay.sdk.State
-import io.softpay.sdk.Transaction
-import io.softpay.softpos.databinding.FragmentConfirmationBinding
 import io.softpay.softpos.databinding.FragmentProgressBinding
 import io.softpay.softpos.ui.MainViewModel
 import io.softpay.softpos.ui.base.BaseFragment
-import io.softpay.softpos.utils.Constants
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
