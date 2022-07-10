@@ -43,7 +43,7 @@ class ResultFragment : BaseFragment() {
     }
 
     override fun setupUiListener() {
-
+        /* NO-OP */
     }
 
     override fun setupObservers() {

@@ -16,5 +16,8 @@ class TransactionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityTransactionBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+
+        mainViewModel.launchTransactionFlow()
+
     }
 }

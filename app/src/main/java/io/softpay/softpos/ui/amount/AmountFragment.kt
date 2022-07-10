@@ -24,6 +24,7 @@ import io.softpay.softpos.ui.splash.SplashFragmentDirections
 import io.softpay.softpos.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -49,7 +50,7 @@ class AmountFragment : BaseFragment() {
     override fun setupView() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.transaction.collect {
+                mainViewModel.transaction.collectLatest {
                     Timber.e("${it}")
                         navigateToProgressFragment()
                 }

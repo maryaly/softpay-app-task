@@ -56,6 +56,7 @@ class ConfirmationFragment : BaseFragment() {
                         mArgs.date,
                         transaction
                     )
+                    navigateToProgressFragment()
                 }
             }
         }
@@ -63,7 +64,7 @@ class ConfirmationFragment : BaseFragment() {
     }
 
     override fun setupUiListener() {
-
+        /* NO-OP */
     }
 
     override fun setupObservers() {
@@ -74,7 +75,6 @@ class ConfirmationFragment : BaseFragment() {
                     viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Default) {
                         mConfirmationViewModel.confirmAmount(true)
                     }
-                    navigateToProgressFragment()
                 }
             })
     }

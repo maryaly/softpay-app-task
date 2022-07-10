@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/progressFragment">
 
     <fragment
         android:id="@+id/splashFragment"
@@ -27,7 +27,7 @@
         app:enterAnim="@anim/anim_fade_in"
         app:exitAnim="@anim/anim_fade_out"
         tools:layout="@layout/fragment_amount">
-       <action
+        <action
             android:id="@+id/action_amountFragment_to_progressFragment"
             app:destination="@id/progressFragment" />
     </fragment>
@@ -83,6 +83,10 @@
             android:name="time"
             app:argType="string"
             app:nullable="true" />
+
+        <action
+            android:id="@+id/action_progressFragment_to_amountFragment"
+            app:destination="@id/amountFragment" />
 
         <action
             android:id="@+id/action_progressFragment_to_confirmationFragment"
