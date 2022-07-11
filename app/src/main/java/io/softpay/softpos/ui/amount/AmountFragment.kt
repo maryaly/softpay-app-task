@@ -61,9 +61,7 @@ class AmountFragment : BaseFragment() {
         mAmountViewModel.mWhichButtonClicked.observe(viewLifecycleOwner, Observer {
             when (it) {
                 Constants.BUTTON_CANCEL_CLICKED -> {
-                    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Default) {
-                        mAmountViewModel.cancelTransaction()
-                    }
+                    mainViewModel.cancelTransaction()
                     findNavController().navigateUp()
                 }
                 Constants.BUTTON_ENTER_CLICKED -> {

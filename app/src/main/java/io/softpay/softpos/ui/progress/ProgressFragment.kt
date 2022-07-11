@@ -46,6 +46,7 @@ class ProgressFragment : BaseFragment() {
                         State.AWAITING_AMOUNT -> navigateToAmountFragment()
                         State.AWAITING_CONFIRMATION -> navigateToConfirmationFragment()
                         State.SUCCESS -> navigateToResultFragment()
+                        State.CANCELLED -> activity?.finish()
                     }
                 }
             }

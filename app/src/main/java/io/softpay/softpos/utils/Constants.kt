@@ -17,5 +17,5 @@ object Constants {
     // Buttons Clicked
     const val BUTTON_CANCEL_CLICKED = "buttonCancelClicked"
     const val BUTTON_ENTER_CLICKED = "buttonEnterClicked"
-    const val BUTTON_BACK_CLICKED = "buttonBackClicked"
+    const val BUTTON_CONFIRM_CLICKED = "buttonConfirmClicked"
 }

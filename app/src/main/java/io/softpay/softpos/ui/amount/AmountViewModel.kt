@@ -77,12 +77,6 @@ class AmountViewModel @Inject constructor(
         _mWhichButtonClicked.value = Constants.BUTTON_CANCEL_CLICKED
     }
 
-    suspend fun cancelTransaction() {
-        transactionManager.dispatch(
-            Input.Cancel
-        )
-    }
-
     fun buttonEnterClicked() {
         _mWhichButtonClicked.value = Constants.BUTTON_ENTER_CLICKED
     }

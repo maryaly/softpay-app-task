@@ -16,6 +16,7 @@ import io.softpay.softpos.R
 import io.softpay.softpos.databinding.FragmentConfirmationBinding
 import io.softpay.softpos.ui.MainViewModel
 import io.softpay.softpos.ui.base.BaseFragment
+import io.softpay.softpos.utils.Constants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import timber.log.Timber
@@ -59,11 +60,15 @@ class ConfirmationFragment : BaseFragment() {
         mConfirmationViewModel.mIsConfirmButtonClicked.observe(
             viewLifecycleOwner,
             Observer {
-                if (it == true) {
-                    viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Default) {
-                        mConfirmationViewModel.confirmAmount(true)
+                when (it) {
+                    Constants.BUTTON_CANCEL_CLICKED -> {
+                        mainViewModel.cancelTransaction()
+                        findNavController().navigateUp()
                     }
-                    navigateToProgressFragment()
+                    Constants.BUTTON_CONFIRM_CLICKED -> {
+                        mConfirmationViewModel.confirmAmount(true)
+                        navigateToProgressFragment()
+                    }
                 }
             })
     }

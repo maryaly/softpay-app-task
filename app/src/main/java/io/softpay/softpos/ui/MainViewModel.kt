@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.softpay.sdk.Input
 import io.softpay.sdk.Transaction
 import io.softpay.sdk.TransactionManager
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -32,6 +33,14 @@ class MainViewModel @Inject constructor(private val transactionManager: Transact
                     mTransaction.value = value
                     _transaction.emit(value)
                 }
+        }
+    }
+
+    fun cancelTransaction() {
+        viewModelScope.launch {
+            transactionManager.dispatch(
+                Input.Cancel
+            )
         }
     }
 }

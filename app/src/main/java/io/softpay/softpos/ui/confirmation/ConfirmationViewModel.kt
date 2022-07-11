@@ -1,17 +1,18 @@
 package io.softpay.softpos.ui.confirmation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.softpay.sdk.Input
 import io.softpay.sdk.State
 import io.softpay.sdk.Transaction
 import io.softpay.sdk.TransactionManager
 import io.softpay.softpos.R
+import io.softpay.softpos.utils.Constants
 import io.softpay.softpos.utils.SingleLiveEvent
 import io.softpay.softpos.utils.number.NumberHelper
 import io.softpay.softpos.utils.resource.ResourceUtilHelper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,17 +33,23 @@ class ConfirmationViewModel @Inject constructor(
     var mPostalCode = MutableLiveData<String>()
     var mAddress = MutableLiveData<String>()
 
-    private var _mIsConfirmButtonClicked = SingleLiveEvent<Boolean>()
-    val mIsConfirmButtonClicked: LiveData<Boolean> = _mIsConfirmButtonClicked
+    private var _mIsConfirmButtonClicked = SingleLiveEvent<String>()
+    val mIsConfirmButtonClicked: LiveData<String> = _mIsConfirmButtonClicked
 
     fun buttonConfirmClicked() {
-        _mIsConfirmButtonClicked.value = true
+        _mIsConfirmButtonClicked.value = Constants.BUTTON_CONFIRM_CLICKED
     }
 
-    suspend fun confirmAmount(value: Boolean) {
-        mTransactionManager.dispatch(
-            Input.Confirm(value)
-        )
+    fun buttonCancelClicked() {
+        _mIsConfirmButtonClicked.value = Constants.BUTTON_CANCEL_CLICKED
+    }
+
+    fun confirmAmount(value: Boolean) {
+        viewModelScope.launch(Dispatchers.Default) {
+            mTransactionManager.dispatch(
+                Input.Confirm(value)
+            )
+        }
     }
 
     fun showInfo(time: String, date: String, model: Transaction) {
