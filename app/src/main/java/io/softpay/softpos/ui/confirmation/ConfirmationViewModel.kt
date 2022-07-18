@@ -20,9 +20,7 @@ class ConfirmationViewModel @Inject constructor(
     private val mResourceUtilHelper: ResourceUtilHelper,
     private val mNumberHelper: NumberHelper,
     private var mTransactionManager: TransactionManager,
-
-
-    ) : ViewModel() {
+) : ViewModel() {
 
     var mState = MutableLiveData<String>()
     var mReferenceId = MutableLiveData<String>()

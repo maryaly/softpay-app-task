@@ -34,43 +34,43 @@ class AmountViewModel @Inject constructor(
 
 
     fun numberOneClicked() {
-        typeTheNumber("1")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._1))
     }
 
     fun numberTwoClicked() {
-        typeTheNumber("2")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._2))
     }
 
     fun numberThreeClicked() {
-        typeTheNumber("3")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._3))
     }
 
     fun numberFourClicked() {
-        typeTheNumber("4")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._4))
     }
 
     fun numberFiveClicked() {
-        typeTheNumber("5")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._5))
     }
 
     fun numberSixClicked() {
-        typeTheNumber("6")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._6))
     }
 
     fun numberSevenClicked() {
-        typeTheNumber("7")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._7))
     }
 
     fun numberEightClicked() {
-        typeTheNumber("8")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._8))
     }
 
     fun numberNineClicked() {
-        typeTheNumber("9")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._9))
     }
 
     fun numberZeroClicked() {
-        typeTheNumber("0")
+        typeTheNumber(mResourceUtilHelper.getResourceString(R.string._0))
     }
 
     fun buttonCancelClicked() {

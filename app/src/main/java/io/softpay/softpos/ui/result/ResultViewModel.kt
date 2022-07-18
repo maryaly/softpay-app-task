@@ -10,11 +10,7 @@ import io.softpay.sdk.TransactionManager
 import timber.log.Timber
 import javax.inject.Inject
 
-@HiltViewModel
-class ResultViewModel @Inject constructor(
-    private var mTransactionManager: TransactionManager,
-
-    ) : ViewModel() {
+class ResultViewModel: ViewModel() {
 
     var mState = MutableLiveData<String>()
     var mDetails = MutableLiveData<String>()
@@ -22,7 +18,7 @@ class ResultViewModel @Inject constructor(
 
 
     fun showInfo(transaction: Transaction) {
-        transaction.referenceId.let { id ->
+        transaction.referenceId?.let { id ->
             mReferenceId.value = id
         }
 
@@ -40,9 +36,4 @@ class ResultViewModel @Inject constructor(
 
     }
 
-    suspend fun cancelTransaction() {
-        mTransactionManager.dispatch(
-            Input.Cancel
-        )
-    }
 }

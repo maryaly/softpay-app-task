@@ -23,7 +23,7 @@ object HiltModules {
 
     @Provides
     @Singleton
-    fun provideTransactionManager(@ApplicationContext mContext: Context): TransactionManager = TransactionManagerImpl()
+    fun provideTransactionManager(): TransactionManager = TransactionManagerImpl()
 
     @Provides
     @Singleton

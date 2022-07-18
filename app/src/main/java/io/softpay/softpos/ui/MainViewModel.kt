@@ -16,13 +16,18 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(private val transactionManager: TransactionManager) :
-    ViewModel() {
+class MainViewModel @Inject constructor(
+    private val transactionManager: TransactionManager
+) : ViewModel() {
 
     private val _transaction = MutableSharedFlow<Transaction>()
     val transaction = _transaction.asSharedFlow()
 
     var mTransaction = MutableLiveData<Transaction>()
+
+    init {
+        launchTransactionFlow()
+    }
 
     fun launchTransactionFlow() {
         viewModelScope.launch {
