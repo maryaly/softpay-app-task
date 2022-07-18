@@ -19,14 +19,13 @@ class ResultViewModel: ViewModel() {
         }
 
         transaction.state.let {
+            Timber.e("$it")
             if (it == State.SUCCESS) {
                 mState.value = "Success"
                 mDetails.value = "Sit Back and relax. Your Burger will be with you soon."
-                Timber.e("" + it)
-            } else {
+            } else if (it == State.FAILURE) {
                 mState.value = "Failed"
                 mDetails.value = "Unfortunately Your Transaction Request is Failed."
-                Timber.e("" + it)
             }
         }
 
