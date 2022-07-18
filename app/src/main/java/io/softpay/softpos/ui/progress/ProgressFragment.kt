@@ -40,8 +40,8 @@ class ProgressFragment : BaseFragment() {
     override fun setupView() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.transaction.collectLatest { transaction ->
-                    Timber.e("${transaction}")
+                mainViewModel.transaction.collectLatest{ transaction ->
+                    Timber.e("$transaction")
                     when (transaction.state) {
                         State.AWAITING_AMOUNT -> navigateToAmountFragment()
                         State.AWAITING_CONFIRMATION -> navigateToConfirmationFragment()
@@ -51,10 +51,6 @@ class ProgressFragment : BaseFragment() {
                 }
             }
         }
-    }
-
-    override fun setupUiListener() {
-        /* NO-OP */
     }
 
     override fun setupObservers() {

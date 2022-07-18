@@ -1,6 +1,9 @@
 package io.softpay.softpos.ui.confirmation
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.softpay.sdk.Input
 import io.softpay.sdk.State

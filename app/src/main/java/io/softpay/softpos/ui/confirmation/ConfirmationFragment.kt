@@ -7,17 +7,20 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import dagger.hilt.android.AndroidEntryPoint
+import io.softpay.sdk.State
 import io.softpay.softpos.R
 import io.softpay.softpos.databinding.FragmentConfirmationBinding
 import io.softpay.softpos.ui.MainViewModel
 import io.softpay.softpos.ui.base.BaseFragment
 import io.softpay.softpos.utils.Constants
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
@@ -41,19 +44,21 @@ class ConfirmationFragment : BaseFragment() {
     }
 
     override fun setupView() {
-        mainViewModel.mTransaction.value?.let {
-            Timber.e("viwModel: $it")
-            mConfirmationViewModel.showInfo(
-                mArgs.time,
-                mArgs.date,
-                it
-            )
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                mainViewModel.transaction.collectLatest { transaction ->
+                    Timber.e("$transaction")
+                    mConfirmationViewModel.showInfo(
+                        mArgs.time,
+                        mArgs.date,
+                        transaction
+                    )
+                    if (transaction.state == State.PROCESSING || transaction.state == State.CANCELLED)
+                        navigateToProgressFragment()
+                }
+            }
         }
         setAnimation()
-    }
-
-    override fun setupUiListener() {
-        /* NO-OP */
     }
 
     override fun setupObservers() {
@@ -63,11 +68,9 @@ class ConfirmationFragment : BaseFragment() {
                 when (it) {
                     Constants.BUTTON_CANCEL_CLICKED -> {
                         mainViewModel.cancelTransaction()
-                        findNavController().navigateUp()
                     }
                     Constants.BUTTON_CONFIRM_CLICKED -> {
                         mConfirmationViewModel.confirmAmount(true)
-                        navigateToProgressFragment()
                     }
                 }
             })

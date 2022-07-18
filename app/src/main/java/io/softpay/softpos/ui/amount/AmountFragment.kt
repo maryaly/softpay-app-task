@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import io.softpay.sdk.State
 import io.softpay.softpos.R
 import io.softpay.softpos.databinding.FragmentAmountBinding
 import io.softpay.softpos.ui.MainViewModel
@@ -44,16 +45,13 @@ class AmountFragment : BaseFragment() {
     override fun setupView() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mainViewModel.transaction.collectLatest {
-                    Timber.e("${it}")
+                mainViewModel.transaction.collectLatest { transaction ->
+                    Timber.e("$transaction")
+                    if (transaction.state == State.PROCESSING || transaction.state == State.CANCELLED)
                         navigateToProgressFragment()
                 }
             }
         }
-    }
-
-    override fun setupUiListener() {
-        /* NO-OP */
     }
 
     override fun setupObservers() {
